@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>EE417_Group_Assignment_Final</display-name>
+  
+  <servlet>
+  <servlet-name>ApproveLoanServlet</servlet-name>
+  <servlet-class>ApproveLoanServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>ApproveLoanServlet</servlet-name>
+  <url-pattern>/ApproveLoanServlet</url-pattern> 
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>ContactServlet</servlet-name>
+  <servlet-class>ContactServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>ContactServlet</servlet-name>
+  <url-pattern>/ContactServlet</url-pattern> 
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>LoanServlet</servlet-name>
+  <servlet-class>LoanServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>LoanServlet</servlet-name>
+  <url-pattern>/LoanServlet</url-pattern> 
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>LoginServlet</servlet-name>
+  <servlet-class>LoginServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>LoginServlet</servlet-name>
+  <url-pattern>/LoginServlet</url-pattern> 
+  </servlet-mapping>
+  
+    <servlet>
+  <servlet-name>LogoutSevlet</servlet-name>
+  <servlet-class>LogoutSevlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>LogoutSevlet</servlet-name>
+  <url-pattern>/LogoutSevlet</url-pattern> 
+  </servlet-mapping>
+  
+      <servlet>
+  <servlet-name>NewsletterServlet</servlet-name>
+  <servlet-class>NewsletterServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>NewsletterServlet</servlet-name>
+  <url-pattern>/NewsletterServlet</url-pattern> 
+  </servlet-mapping>
+  
+      <servlet>
+  <servlet-name>RegisterServlet</servlet-name>
+  <servlet-class>RegisterServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>RegisterServlet</servlet-name>
+  <url-pattern>/RegisterServlet</url-pattern> 
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>TransferRequestServlet</servlet-name>
+  <servlet-class>TransferRequestServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>TransferRequestServlet</servlet-name>
+  <url-pattern>/TransferRequestServlet</url-pattern> 
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>UpdateUserBalanceServlet</servlet-name>
+  <servlet-class>UpdateUserBalanceServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>UpdateUserBalanceServlet</servlet-name>
+  <url-pattern>/UpdateUserBalanceServlet</url-pattern> 
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>UpdateUserServlet</servlet-name>
+  <servlet-class>UpdateUserServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>UpdateUserServlet</servlet-name>
+  <url-pattern>/UpdateUserServlet</url-pattern> 
+  </servlet-mapping>
+ 
+  <welcome-file-list>
+<!--<welcome-file>about.jsp</welcome-file>
+    <welcome-file>admin.jsp</welcome-file>
+    <welcome-file>adminapproveloans.jsp</welcome-file>
+    <welcome-file>adminupdateuser.jsp</welcome-file>
+    <welcome-file>contact.jsp</welcome-file>
+    <welcome-file>home.jsp</welcome-file> -->
+    <welcome-file>index.jsp</welcome-file>
+<!--     <welcome-file>myaccount.jsp</welcome-file>
+    <welcome-file>newsblog.jsp</welcome-file>
+    <welcome-file>services.jsp</welcome-file>
+    <welcome-file>signup.jsp</welcome-file> -->
+    
+<!--     <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file> -->
+  </welcome-file-list>
+</web-app>
