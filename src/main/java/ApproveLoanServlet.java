@@ -13,15 +13,13 @@ public class ApproveLoanServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-
-        response.setContentType("text/html");
+    	response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
 
         String loanid = request.getParameter("loanid");
         String loanresult = request.getParameter("amount");
         System.out.println("Approve loan: " + loanresult);
-
-
 
 
             System.out.println("hello");
@@ -36,6 +34,14 @@ public class ApproveLoanServlet extends HttpServlet {
 
             String loanamount = null;
             String loanaccount = null;
+            
+            if(Objects.equals(loanid, "") || Objects.equals(loanresult, ""))
+            {
+                out.println("<p style='text-align: center;'> Can't leave inputs blank </p>");
+                RequestDispatcher rd = request.getRequestDispatcher("adminapproveloans.jsp");
+                rd.include(request,response);
+            }
+            else {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection(url, usernames, password);
@@ -79,6 +85,7 @@ public class ApproveLoanServlet extends HttpServlet {
 
             } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
+            }
             }
         }
 

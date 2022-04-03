@@ -77,7 +77,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
 <br>
 <section class="log-form" style=" background-image: linear-gradient(120deg, hsl(234, 70%, 51%),hsl(0, 0%, 57%)">
     <!-- Form to process transferring funds-->
-    <form action="TransferRequestServlet" method="post" class="form_section" id="form" onsubmit="validation()">
+    <form action="TransferRequestServlet" method="post" class="form_section" id="form">
         <div class="form-box">
 
             <div class="titles">
@@ -108,7 +108,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
         </p>
         <input type="number" name="price" id="price" min="10" max="1000" step="10" value="10"
                >
-        <output class="price-output" for="price" id="amountout"></output>
+        <output style="color: black" class="price-output" for="price" id="amountout"></output>
         <script>const price = document.querySelector('#price');
         const output = document.querySelector('.price-output');
         output.textContent = price.value;
@@ -127,38 +127,6 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
         </div>
     </form>
 </section>
-    <script>
-
-        function validation(){
-        let id = (id) => document.getElementById(id);
-        let classes = (classes) => document.getElementsByClassName(classes);
-        let Account_No = id("Account_No"),
-            name = id("name"),
-            email = id("email"),
-            form = id("form"),
-            amountout = id("amountout"),
-            errorMsg = classes("error");
-
-        let showbutn = id("showbutn");
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-            engine(name, 0, "Name can't be blank");
-            engine(Account_No, 1, "Account Number can't be blank");
-            engine(email, 2, "Email can't be blank");
-        });
-        let engine = (id, serial, message) => {
-            if (id.value.trim() === "") {
-                errorMsg[serial].innerHTML = message;
-                id.style.border = "2px solid red";
-            }
-            else {
-                errorMsg[serial].innerHTML = "";
-                id.style.border = "2px solid green";
-
-            }
-        }
-        }
-    </script>
 
 <br>
 <br>
@@ -173,7 +141,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
 <section class="log-form" style=" background-image: linear-gradient(120deg, hsl(234, 70%, 51%),hsl(0, 0%, 57%)">
 
     <!-- Form application to apply for a loan -->
-    <form action="LoanServlet" method="post" class="form_section" id="form1" onsubmit="validation()">
+    <form action="LoanServlet" method="post" class="form_section" id="form1">
         <div class="form-box">
 
             <div class="titles">
@@ -214,7 +182,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
        
         <input type="number" name="amount" id="amount" min="20" max="1000" step="10" value="20"
                >
-        <output class="amount-output" for="amount" id="amountout1"> </output>
+        <output style="color: black" class="amount-output" for="amount" id="amountout1"> </output>
         <script>const amount = document.querySelector('#amount');
         const output1 = document.querySelector('.amount-output');
         output1.textContent = amount.value;
@@ -234,49 +202,6 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
     </form>
 </section>
 
-    <script>
-        function validation() {
-            let id1 = (id) => document.getElementById(id);
-            let classes1 = (classes) => document.getElementsByClassName(classes);
-            let Account_No1 = id1("Account_No1"),
-                name1 = id1("name1"),
-                email1 = id1("email1"),
-                amountout1 = id("amountout1"),
-                form1 = id1("form1"),
-                errorMsg1 = classes1("error1");
-            var Account_No1Arr = [];
-            var name1Arr = [];
-            var email1Arr = [];
-            var amount1Arr = [];
-            let loanbutn = id("loanbutn");
-            form1.addEventListener("submit", (e) => {
-                e.preventDefault();
-                engine1(Account_No1, 0, "Account Number can't be blank");
-                engine1(name1, 1, "Name can't be blank");
-                engine1(email1, 2, "Email can't be blank");
-            });
-            let engine1 = (id, serial, message) => {
-                console.log(id + serial + message);
-                if (id.value.trim() === "") {
-                    errorMsg1[serial].innerHTML = message;
-                    id.style.border = "2px solid red";
-                } else {
-                    errorMsg1[serial].innerHTML = "";
-                    id.style.border = "2px solid green";
-                    if (serial == 2) {
-                        Account_No1Arr.push(Account_No1.value.trim());
-                        name1Arr.push(name1.value.trim());
-                        email1Arr.push(email1.value.trim());
-                        amount1Arr.push(amountout1.value.trim());
-                        localStorage.setItem('accountno1', JSON.stringify(Account_No1Arr));
-                        localStorage.setItem('name1', JSON.stringify(name1Arr));
-                        localStorage.setItem('email1', JSON.stringify(email1Arr));
-                        localStorage.setItem('amount1', JSON.stringify(amount1Arr));
-                    }
-                }
-            }
-        }
-    </script>
 
 
 <br>

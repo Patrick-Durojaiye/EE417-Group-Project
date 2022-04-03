@@ -46,7 +46,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
 
 <!-- main section for the form, overall container for the whole form, can center the form from here -->
 <section class="log-form" style=" background-image: linear-gradient(120deg, hsl(234, 70%, 51%),hsl(0, 0%, 57%)">
-    <form id="form" action="LoginServlet" method="post" onsubmit="validation()">
+    <form id="form" action="LoginServlet" method="post">
         <!-- this is the form class -->
         <div class="form-box">
             <!-- this is the title class to change the font/etc of the main title which is Login -->
@@ -96,47 +96,6 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
 <!-- validation logic for the login page  -->
 
 <script>
-
-    function validation() {
-        let id = (id) => document.getElementById(id);
-        let classes = (classes) => document.getElementsByClassName(classes);
-        let username = id("name"),
-            email = id("email"),
-            password = id("password"),
-            form = id("form"),
-            errorMsg = classes("error");
-        var username2Arr = [];
-        var email4Arr = [];
-        var dateofbirthArr = [];
-        var passwordArr = [];
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-            engine(username, 0, "Username can't be blank");
-            engine(email, 1, "Email can't be blank");
-            engine(password, 2, "Password can't be blank")
-        });
-        let engine = (id, serial, message) => {
-            if (id.value.trim() === "") {
-                errorMsg[serial].innerHTML = message;
-                id.style.border = "2px solid red";
-            } else {
-                errorMsg[serial].innerHTML = "";
-                id.style.border = "2px solid green";
-                if (serial == 3) {
-                    username2Arr.push(username.value.trim());
-                    email4Arr.push(email.value.trim());
-                    dateofbirthArr.push(dateofbirth.value.trim());
-                    passwordArr.push(password.value.trim());
-                    // stores form inputs into local storage
-                    localStorage.setItem("usernamesignup", JSON.stringify(username2Arr));
-                    localStorage.setItem("emailsignup", JSON.stringify(email4Arr));
-                    localStorage.setItem("dateofbirth", JSON.stringify(dateofbirthArr));
-                    localStorage.setItem("password", JSON.stringify(passwordArr));
-                    alert("Signed Up");
-                }
-            }
-        }
-    }
 
     function copyfunc() {
         alert("You just copied sensistive becareful not to paste it in an unsecure place");

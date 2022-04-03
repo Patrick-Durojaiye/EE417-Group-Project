@@ -17,6 +17,8 @@ public class UpdateUserServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
+    	 response.setContentType("text/html");
+         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession(true);
         String username = request.getParameter("name");
         String accountnumber = request.getParameter("accountnumber");
@@ -28,6 +30,14 @@ public class UpdateUserServlet extends HttpServlet {
         String password = "ee417";
         String url = "jdbc:mysql://ee417.crxkzf89o3fh.eu-west-1.rds.amazonaws.com:3306/testdb";
         System.out.println("Inside post function");
+        
+        if(Objects.equals(loanid, "") || Objects.equals(loanresult, ""))
+        {
+            out.println("<p style='text-align: center;'> Can't leave inputs blank </p>");
+            RequestDispatcher rd = request.getRequestDispatcher("adminapproveloans.jsp");
+            rd.include(request,response);
+        }
+        else {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con= DriverManager.getConnection(url,usernames,password);
@@ -43,6 +53,7 @@ public class UpdateUserServlet extends HttpServlet {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+        }
         }
     }
 }

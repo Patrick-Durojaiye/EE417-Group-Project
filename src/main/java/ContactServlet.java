@@ -20,6 +20,9 @@ public class ContactServlet extends HttpServlet{
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
+    	response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        
         String names = request.getParameter("name");
         String emails = request.getParameter("email");
         String messages = request.getParameter("textfield");
@@ -28,6 +31,14 @@ public class ContactServlet extends HttpServlet{
         String usernames = "ee417";
         String password = "ee417";
         String url = "jdbc:mysql://ee417.crxkzf89o3fh.eu-west-1.rds.amazonaws.com:3306/testdb";
+        
+        if(Objects.equals(names, "") || Objects.equals(emails, "") || Objects.equals(messages, ""))
+        {
+            out.println("<p style='text-align: center;'> Can't leave inputs blank </p>");
+            RequestDispatcher rd = request.getRequestDispatcher("contact.jsp");
+            rd.include(request,response);
+        }
+        else {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con= DriverManager.getConnection(url,usernames,password);
@@ -36,15 +47,14 @@ public class ContactServlet extends HttpServlet{
             stmt.executeUpdate(sqlstatement);
             System.out.println("uploaded contact info");
             con.close();
+            response.sendRedirect("home.jsp?name=" + names);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
-
-        response.sendRedirect("home.jsp?name=" + names);
-        System.out.println("Logged in");
+        }
 
     }
 

@@ -13,7 +13,8 @@ public class TransferRequestServlet extends HttpServlet{
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
 
-        response.setContentType("text/html");
+    	response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
 
         String username = request.getParameter("name");
@@ -33,6 +34,13 @@ public class TransferRequestServlet extends HttpServlet{
             ResultSet rs1 = null;
             int rs = 0;
             ResultSet rs2 = null;
+            
+            if(Objects.equals(username, "") || Objects.equals(accountno, "") || Objects.equals(amount, ""))
+            {
+                out.print("<p style='text-align: center;'> Can't leave inputs blank </p>");
+                RequestDispatcher rd = request.getRequestDispatcher("services.jsp");
+                rd.include(request,response);
+            }
 
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");

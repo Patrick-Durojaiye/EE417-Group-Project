@@ -16,6 +16,8 @@ public class LoanServlet extends HttpServlet{
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
+    	response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
         String accno = request.getParameter("Account_No1");
         String firstname = request.getParameter("name1");
         String amount = request.getParameter("amount");
@@ -26,7 +28,12 @@ public class LoanServlet extends HttpServlet{
         String password = "ee417";
         String url = "jdbc:mysql://ee417.crxkzf89o3fh.eu-west-1.rds.amazonaws.com:3306/testdb";
 
-        System.out.println("Inside post function");
+        if(Objects.equals(accno, "") || Objects.equals(firstname, "") || Objects.equals(amount, ""))
+        {
+            out.println("<p style='text-align: center;'> Can't leave inputs blank </p>");
+            RequestDispatcher rd = request.getRequestDispatcher("services.jsp");
+            rd.include(request,response);
+        }
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con= DriverManager.getConnection(url,usernames,password);
@@ -35,15 +42,13 @@ public class LoanServlet extends HttpServlet{
             stmt.executeUpdate(sqlstatement);
             System.out.println("uploaded contact info");
             con.close();
+            response.sendRedirect("home.jsp");
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
-
-        response.sendRedirect("home.jsp");
-        System.out.println("Logged in");
 
     }
 

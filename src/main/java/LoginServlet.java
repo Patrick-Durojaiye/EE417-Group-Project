@@ -34,6 +34,13 @@ public class LoginServlet extends HttpServlet {
         String url = "jdbc:mysql://ee417.crxkzf89o3fh.eu-west-1.rds.amazonaws.com:3306/testdb";
         System.out.println("Inside post function");
 
+        if(Objects.equals(firstname, "") || Objects.equals(email, "") || Objects.equals(userpasswords, ""))
+        {
+            out.print("<p style='text-align: center;'> Can't leave inputs blank </p>");
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+            rd.include(request,response);
+        }
+        
         ResultSet rs = null;
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -46,10 +53,15 @@ public class LoginServlet extends HttpServlet {
             System.out.println("rs: " + rs);
             System.out.println("uploaded contact info");
 
-            if(rs== null)
+            if(!rs.isBeforeFirst())
             {
-                response.sendRedirect("home.jsp");
+
+                out.print("<p style='text-align: center;'> User doesn't exist </p>");
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+                rd.include(request,response);
+
             }
+            
             while (rs.next())
             {
                 String first_name = rs.getString("first_name");
