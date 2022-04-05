@@ -37,7 +37,7 @@ public class TransferRequestServlet extends HttpServlet{
             
             if(Objects.equals(username, "") || Objects.equals(accountno, "") || Objects.equals(amount, ""))
             {
-                out.print("<p style='text-align: center;'> Can't leave inputs blank </p>");
+                out.print("<p style='text-align: center; color:red'> Can't leave inputs blank </p>");
                 RequestDispatcher rd = request.getRequestDispatcher("services.jsp");
                 rd.include(request,response);
             }

@@ -34,7 +34,7 @@ public class ContactServlet extends HttpServlet{
         
         if(Objects.equals(names, "") || Objects.equals(emails, "") || Objects.equals(messages, ""))
         {
-            out.println("<p style='text-align: center;'> Can't leave inputs blank </p>");
+            out.println("<p style='text-align: center; color:red'> Can't leave inputs blank </p>");
             RequestDispatcher rd = request.getRequestDispatcher("contact.jsp");
             rd.include(request,response);
         }

@@ -20,9 +20,16 @@ public class NewsletterServlet extends HttpServlet{
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        System.out.println("in post news");
+    	response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
         String emails = request.getParameter("emailft");
-
+        
+        if (Objects.equals(emails, "")) {
+            out.print("<p style='text-align: center; color:red'> Can't leave inputs blank </p>");
+            RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
+            rd.include(request, response);
+        }
+        else {
         String dbname = "testdb";
         String usernames = "ee417";
         String password = "ee417";
@@ -40,7 +47,7 @@ public class NewsletterServlet extends HttpServlet{
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-
+        }
 
     }
 }

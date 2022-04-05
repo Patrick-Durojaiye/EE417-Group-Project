@@ -19,6 +19,8 @@ public class RegisterServlet extends HttpServlet{
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
+    	response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
         String names = request.getParameter("name");
         String emails = request.getParameter("email");
         String date_of_birth = request.getParameter("date_of_birth");
@@ -26,15 +28,15 @@ public class RegisterServlet extends HttpServlet{
         System.out.println("Date of birth: " + date_of_birth);
         String username = request.getParameter("name");
 
-
-//        HttpSession session = request.getSession(true);
-//        session.setAttribute("User", names);
-//        Cookie name = new Cookie("name", request.getParameter("name"));
-//
-//        // Set expiry date after 24 Hrs for both the cookies.
-//        name.setMaxAge(60 * 60 * 24);
+        if (Objects.equals(names, "") || Objects.equals(emails, "") || Objects.equals(passwords, "")) {
+            out.print("<p style='text-align: center; color:red'> Can't leave inputs blank </p>");
+            RequestDispatcher rd = request.getRequestDispatcher("signup.jsp");
+            rd.include(request, response);
+        }
+        
+        else {
         ResultSet rs = null;
-//        response.addCookie(name);
+
 
         String dbname = "testdb";
         String usernames = "ee417";
@@ -82,7 +84,7 @@ public class RegisterServlet extends HttpServlet{
         }
 
 
-  
+        }
 
     }
 }

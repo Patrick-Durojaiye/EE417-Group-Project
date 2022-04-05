@@ -37,7 +37,7 @@ public class ApproveLoanServlet extends HttpServlet {
             
             if(Objects.equals(loanid, "") || Objects.equals(loanresult, ""))
             {
-                out.println("<p style='text-align: center;'> Can't leave inputs blank </p>");
+                out.println("<p style='text-align: center; color:red'> Can't leave inputs blank </p>");
                 RequestDispatcher rd = request.getRequestDispatcher("adminapproveloans.jsp");
                 rd.include(request,response);
             }

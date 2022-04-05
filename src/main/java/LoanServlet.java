@@ -30,7 +30,7 @@ public class LoanServlet extends HttpServlet{
 
         if(Objects.equals(accno, "") || Objects.equals(firstname, "") || Objects.equals(amount, ""))
         {
-            out.println("<p style='text-align: center;'> Can't leave inputs blank </p>");
+            out.println("<p style='text-align: center; color:red'> Can't leave inputs blank </p>");
             RequestDispatcher rd = request.getRequestDispatcher("services.jsp");
             rd.include(request,response);
         }

@@ -31,9 +31,9 @@ public class UpdateUserServlet extends HttpServlet {
         String url = "jdbc:mysql://ee417.crxkzf89o3fh.eu-west-1.rds.amazonaws.com:3306/testdb";
         System.out.println("Inside post function");
         
-        if(Objects.equals(loanid, "") || Objects.equals(loanresult, ""))
+        if(Objects.equals(username, "") || Objects.equals(accountnumber, "") || Objects.equals(userpass, ""))
         {
-            out.println("<p style='text-align: center;'> Can't leave inputs blank </p>");
+            out.println("<p style='text-align: center; color:red'> Can't leave inputs blank </p>");
             RequestDispatcher rd = request.getRequestDispatcher("adminapproveloans.jsp");
             rd.include(request,response);
         }

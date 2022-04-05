@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 
         if(Objects.equals(firstname, "") || Objects.equals(email, "") || Objects.equals(userpasswords, ""))
         {
-            out.print("<p style='text-align: center;'> Can't leave inputs blank </p>");
+            out.print("<p style='text-align: center; color:red'> Can't leave inputs blank </p>");
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.include(request,response);
         }
